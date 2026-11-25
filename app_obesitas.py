@@ -96,9 +96,9 @@ if tombol_cek:
         map_fcvc[fcvc_teks], map_ch2o[ch2o_teks], map_faf[faf_teks], map_tue[tue_teks]
     ]])
     
-    # Prediksi Machine Learning
-    hasil_ml = model.predict(fitur_input)
-    peluang = np.max(model.predict_proba(fitur_input)) * 100
+    # Prediksi Machine Learning (ambil nilai teks tunggalnya)
+    hasil_ml = str(model.predict(fitur_input).item())
+    peluang = float(np.max(model.predict_proba(fitur_input))) * 100
     
     terjemahan_label = {
         "Insufficient_Weight": ("Berat Badan Kurang (Underweight)", "info"),
@@ -118,7 +118,7 @@ if tombol_cek:
     elif imt <= 22.9:
         kat_kemenkes = "Normal"
     elif imt <= 24.9:
-        kat_kemenkes = "Overweight (Beresiko Obesitas)"
+        kat_kemenkes = "Overweight (Berisiko Obesitas)"
     else:
         kat_kemenkes = "Obesitas"
         
